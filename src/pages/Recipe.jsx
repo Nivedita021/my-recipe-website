@@ -2,6 +2,10 @@ import { useEffect,useState } from "react";
 import styled from'styled-components';
 import {useParams} from 'react-router-dom';
 import React from 'react';
+import HoverRating from "../components/Rating";
+import MenuBookSharpIcon from '@mui/icons-material/MenuBookSharp';
+import { Button, CardMedia,Card,CardHeader, Grid,List, ListItem, ListItemText, Box, Typography, ListItemButton, Paper, Container, CardContent } from "@mui/material";
+
 
 function Recipe(){
     let params=useParams();
@@ -16,71 +20,76 @@ setDetails(detailData);
         fetchDetails();
 
     }, [params.name]);
+    const [selectedIndex, setSelectedIndex] = React.useState(1);
+
+  const handleListItemClick = (event, index) => {
+    setSelectedIndex(index);
+  };
+
+
     return(
-        <DetailWrapper>
-         <div>
-            <h2>{details.title}</h2>
-            <img src={details.image} alt="" />
-            </div>
-            <Info>
-                <Button className={activeTab === 'instructions' ? 'active' : ''} onClick={() => setActiveTab('instructions')}>Instructions</Button>
-                <Button className={activeTab === 'ingredients' ? 'active' : ''} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
+      <Container fixed >
+        
+        <Card>
+        <CardHeader
+  
+        title={details.title}
+    
+      />
+        
+        
+       
+       <CardMedia
+        sx={{ p: 10, borderRadius: 2}}
+        component="img"
+        image={details.image}
+        title={details.title}
+      />
+     <CardContent>
+     <Box
+        display="flex" 
+        width={500} height={80} 
+         m="auto"
+      >
+        <Box m="auto">
+        <Typography variant="h6"> Rate the Recipe :</Typography> <HoverRating/> 
+        </Box>
+        
+      </Box>
+      <Grid m="auto">
+        <Button sx={{ height: 40, width: "auto",  ml: 1}} color="secondary" size="medium" variant={activeTab === 'instructions' ? 'contained' : 'outlined'} onClick={() => setActiveTab('instructions')}>Instructions</Button>
+                <Button sx={{ height: 40, width: "auto",  ml: 1}} color="secondary" size="medium" variant={activeTab === 'ingredients' ? 'contained' : 'outlined'} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
+        </Grid>   
+              
            {activeTab === 'instructions' && (
               <div>
               <br />
               <br />
-              <p dangerouslySetInnerHTML={{__html: details.summary}}>
+              <Typography variant="body1" sx={{p: 1}} paragraph dangerouslySetInnerHTML={{__html: details.summary}}>
                  
-              </p>
+              </Typography >
               <br />
               <br />
-              <p dangerouslySetInnerHTML={{__html:details.instructions}}></p>
+              <Typography variant="body1" sx={{p: 1}} paragraph dangerouslySetInnerHTML={{__html:details.instructions}}>
+
+              </Typography>
              </div>
            )}
          {activeTab === 'ingredients' && (
- <ul>
+ <List sx={{mt:5}}>
  {details.extendedIngredients.map((ingredient) =>(
-     <li key={ingredient.id}>{ingredient.original}</li>
+     <ListItemButton key={ingredient.id} selected={selectedIndex === ingredient.id} >
+        <MenuBookSharpIcon sx={{mr: 2}}/>
+        {ingredient.original}</ListItemButton>
  ))}
-</ul>
+
+</List>
          )};
-          
-            </Info>
-        </DetailWrapper>
+          </CardContent>
+          </Card> 
+            </Container>
     );
 }
-const DetailWrapper = styled.div`
-margin-top: 10rem;
-margin-bottom: 5rem;
-display: flex;
-.active{
-    background: linear-gradient(35deg, #494949, #313131);
-    color: white;
-} 
-h2{
-    margin-bottom: 2rem;
-}
-li{
-    font-size: 1.2rem;
-    line-height: 2.5rem;
-}
-ul{
-    margin-top: 2rem;
-}
-p{
-    font-size: 1.1rem;
-}
-`;
-const Button = styled.button`
-padding: 1rem 1rem;
-color: #313131;
-background: white;
-border: 2px solid black;
-margin-right: 1rem;
-font-weight: 600;
-`;
-const Info = styled.div`
-margin-left: 2rem;
 
-`;
+
 export default Recipe;

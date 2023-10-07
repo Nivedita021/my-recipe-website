@@ -3,25 +3,41 @@ import {GiNoodles,GiCoolSpices} from 'react-icons/gi';
 import styled from 'styled-components';
 import React from 'react';
 import {NavLink} from 'react-router-dom';
+import LocalPizzaIcon from '@mui/icons-material/LocalPizza';
+import LunchDiningIcon from '@mui/icons-material/LunchDining';
+import { Typography } from '@mui/material';
+import RamenDiningIcon from '@mui/icons-material/RamenDining';
+import KebabDiningIcon from '@mui/icons-material/KebabDining';
+import {Link} from '@mui/material';
+import {Fab} from '@mui/material';
 function Category(){
     return(
         <List>
-<SLink to={'/cuisine/Italian'}>
-    <FaPizzaSlice />
-    <h4>Italian</h4>
-</SLink>
-<SLink to={'/cuisine/American'}>
-    <FaHamburger />
-    <h4>American</h4>
-</SLink>
-<SLink to={'/cuisine/Thai'}>
-    <GiNoodles />
-    <h4>Thai</h4>
-</SLink>
-<SLink to={'/cuisine/Indian'}>
-    <GiCoolSpices />
-    <h4>Indian</h4>
-</SLink>
+            <Link href={'/cuisine/Italian'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+            <LocalPizzaIcon />
+             Italian
+              </Fab>
+              </Link>
+              <Link href={'/cuisine/American'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+            <LunchDiningIcon/>
+             American
+              </Fab>
+              </Link>
+              <Link href={'/cuisine/Thai'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+            <RamenDiningIcon/>
+             Thai
+              </Fab>
+              </Link>
+              <Link href={'/cuisine/Indian'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m: 2}}>
+            <KebabDiningIcon/>
+             Indian
+              </Fab>
+              </Link>
+              
         </List>
     );
 }
@@ -35,12 +51,13 @@ display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
-border-radius: 50%;
+border-radius: 100%;
 margin-right:1rem;
+padding: 5 rem;
 text-decoration:none;
-background: linear-gradient(35deg, #494949, #313131);
-width:8rem;
-height:8rem;
+background:linear-gradient(to right, #9d27b2, #6b067f);
+width:auto;
+height:auto;
 cursor:pointer;
 transform: scale(0.7);
 

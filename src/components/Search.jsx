@@ -14,26 +14,30 @@ return (
     <FormStyle onSubmit={submitHandler}>
         <div>
             <FaSearch></FaSearch>
-        <input placeholder='Search for Recipes...' onChange={(e) => setInput(e.target.value)} type="text" value={input}/>
+        <input placeholder='Search Favourite Recipes ...' onChange={(e) => setInput(e.target.value)} type="text" value={input} />
         </div>
      
     </FormStyle>
 );
 }
  const FormStyle = styled.form`
- margin:0rem 20rem;
-
+ margin:0rem 10rem;
+ width: 300;
 
  div{
  width:100%;
 position: relative;
  }
+
  input{
     border: none;
-    background: linear-gradient(35deg, #494949, #313131);
+    background: linear-gradient(to right, #9d27b2, #6b067f);
     font-size:1.5rem;
     color: white;
     padding: 1rem 3rem;
+    ::placeholder {
+        color: white;
+      }
     border: none;
     border-radius: 1rem;
     outline: none;
