@@ -5,6 +5,8 @@ import styled from "styled-components";
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import {Link} from 'react-router-dom';
+import { Typography } from '@mui/material';
+
 function Veg()
 {
   const [veg, setVeg] = useState([]);
@@ -29,9 +31,9 @@ getVeg();
        
        
       <Wrapper>
-          <h3>
+          <Typography variant='h4' sx={{m: 3}}>
            Our Vegetarian Picks
-          </h3>
+          </Typography>
           <Splide options={{
               perPage:3,
               arrows:false,
@@ -44,9 +46,9 @@ getVeg();
                   <SplideSlide>
       <Card>
         <Link to={"/recipe/" + recipe.id}>
-          <p>
+          <Typography>
               {recipe.title}
-          </p>
+          </Typography>
           <img src={recipe.image} alt={recipe.title} />
           <Gradient />
           </Link>
