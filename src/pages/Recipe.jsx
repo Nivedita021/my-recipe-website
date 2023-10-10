@@ -40,25 +40,28 @@ setDetails(detailData);
         
        
        <CardMedia
-        sx={{ p: 10, borderRadius: 2}}
+        sx={{ p: 5, borderRadius: 4, display: 'flex'}}
         component="img"
         image={details.image}
         title={details.title}
       />
      <CardContent>
      <Box
-        display="flex" 
-        width={500} height={80} 
-         m="auto"
+     sx={{
+        display:"flex" ,
+        width:500,
+        height:80 ,
+         m:"auto"
+     }}
       >
-        <Box m="auto">
+        <Box>
         <Typography variant="h6"> Rate the Recipe :</Typography> <HoverRating/> 
         </Box>
         
       </Box>
-      <Grid m="auto">
-        <Button sx={{ height: 40, width: "auto",  ml: 1}} color="secondary" size="medium" variant={activeTab === 'instructions' ? 'contained' : 'outlined'} onClick={() => setActiveTab('instructions')}>Instructions</Button>
-                <Button sx={{ height: 40, width: "auto",  ml: 1}} color="secondary" size="medium" variant={activeTab === 'ingredients' ? 'contained' : 'outlined'} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
+      <Grid sx={{m:"auto"}}>
+        <Button sx={{ height: 'auto', width: 115,  m: 1}} color="secondary" size="medium" variant={activeTab === 'instructions' ? 'contained' : 'outlined'} onClick={() => setActiveTab('instructions')}>Instructions</Button>
+                <Button sx={{ height: 'auto', width: 115,  m: 1}} color="secondary" size="medium" variant={activeTab === 'ingredients' ? 'contained' : 'outlined'} onClick={() => setActiveTab('ingredients')}>Ingredients</Button>
         </Grid>   
               
            {activeTab === 'instructions' && (
