@@ -10,49 +10,45 @@ import RamenDiningIcon from '@mui/icons-material/RamenDining';
 import KebabDiningIcon from '@mui/icons-material/KebabDining';
 import {Link} from '@mui/material';
 import {Fab} from '@mui/material';
+import {List} from '@mui/material';
 function Category(){
     return(
-        <List>
-            <Link href={'/cuisine/Italian'} underline="none">
-            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+        <List sx={{display: 'flex', justifyContent:'center', m:2 }}>
+            <SLink to={'/cuisine/Italian'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:1}}>
             <LocalPizzaIcon />
              Italian
               </Fab>
-              </Link>
-              <Link href={'/cuisine/American'} underline="none">
-            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+              </SLink>
+              <SLink to={'/cuisine/American'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:1}}>
             <LunchDiningIcon/>
              American
               </Fab>
-              </Link>
-              <Link href={'/cuisine/Thai'} underline="none">
-            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:2}}>
+              </SLink>
+              <SLink to={'/cuisine/Thai'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m:1}}>
             <RamenDiningIcon/>
              Thai
               </Fab>
-              </Link>
-              <Link href={'/cuisine/Indian'} underline="none">
-            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m: 2}}>
+              </SLink>
+              <SLink to={'/cuisine/Indian'} underline="none">
+            <Fab color="secondary" aria-label="edit" sx={{width: 97, height:97, m: 1}}>
             <KebabDiningIcon/>
              Indian
               </Fab>
-              </Link>
+              </SLink>
               
         </List>
     );
 }
-const List=styled.div`
-display: flex;
-justify-content:center;
-margin: 2rem 0rem;
-`;
+
 const SLink=styled(NavLink)`
 display: flex;
 flex-direction: column;
 justify-content: center;
 align-items: center;
 border-radius: 100%;
-margin-right:1rem;
 padding: 5 rem;
 text-decoration:none;
 background:linear-gradient(to right, #9d27b2, #6b067f);
