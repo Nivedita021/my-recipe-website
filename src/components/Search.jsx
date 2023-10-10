@@ -21,12 +21,15 @@ return (
 );
 }
  const FormStyle = styled.form`
- margin:0rem 10rem;
- width: 300;
+
+ width: 100%;
+ display: flex;
+ justify-content: center;
 
  div{
  width:100%;
-position: relative;
+ position: relative;
+
  }
 
  input{
