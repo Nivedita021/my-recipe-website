@@ -1,12 +1,13 @@
 import React from 'react';            
 import { useState } from 'react';
 import { useEffect } from 'react';
-import styled from "styled-components";
+import {motion} from 'framer-motion';
 import {Splide, SplideSlide} from '@splidejs/react-splide';
 import '@splidejs/splide/dist/css/splide.min.css';
 import {Link} from 'react-router-dom';
 import { CardContent, CardHeader, CardMedia, Typography } from '@mui/material';
-import { Card, Box } from '@mui/material';
+import styled from 'styled-components';
+
 function Popular()
 {
     const [popular, setPopular] = useState([]);
@@ -27,56 +28,52 @@ getPopular();
        
     };
     return (
-        <div>
-       
-       
-<Wrapper>
+<>
     <Typography variant='h4' sx={{m: 3}}>
         Popular Picks
     </Typography>
-    <Splide options={{
-        perPage:3,
-        arrows:false,
-        pagination:false,
-        gap: "1rem",
-        drag:'free',
-    }}>
-    {popular.map((recipe)=>{
-        return(
-            <SplideSlide>
-                <Box sx={{m:2}}>
-<Card>
-    <Link to={"/recipe/" + recipe.id}>
-    
-         
-    <CardMedia image={recipe.image} title={recipe.title} component="img" />
-  <CardContent>  <Typography variant='body1'> {recipe.title}</Typography>
-  </CardContent>
-    </Link>
-</Card>
-</Box>
-</SplideSlide>
-        );
-    })}
-    </Splide>
-</Wrapper>
-        
-      
-        </div>
+    <Grid
+        animate={{opacity: 1}}
+        initial={{opacity: 0}}
+        exit={{opacity: 0}}
+        transition={{duration: 0.5}}
+        >
+       {
+        popular.map((item)=>{
+            return(
+                <Card key={item.id}>
+                    <Link to={"/recipe/" + item.id}>
+                    <img src={item.image} alt="" />
+                    <Typography variant='h6'>{item.title}</Typography>
+                    </Link>
+                </Card>
+            )
+        })
+       }
+        </Grid>        
+        </>
+       
     );
 }
-const Wrapper= styled.div`
-margin: 4rem 0rem;
+
+const Card =styled.div`
+img{
+    width:100%;
+    height:80%;
+    border-radius:2rem;
+   
+}
+a{
+  text-decoration: none;  
+}
+h6{
+    text-align: center;
+    padding: 0.5rem;
+}
 `;
-
-const Gradient=styled.div`
-z-index:3;
-position:absolute;
-width:100%;
-height:100%;
-background:linear-gradient(rgba(0,0,0,0),rgba(0,0,0,0.5));
-
-
-
+const Grid=styled(motion.div)`
+display:grid;
+grid-template-columns: repeat(auto-fit, minmax(15rem,1fr));
+grid-gap:1rem;
 `;
 export default Popular;
