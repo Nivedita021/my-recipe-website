@@ -1,34 +1,38 @@
 import React from 'react';
 import styled from 'styled-components';
-import {useState} from 'react';
-import {FaSearch} from 'react-icons/fa';
-import {useNavigate} from 'react-router-dom';
+import { useState } from 'react';
+import { FaSearch } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 function Search() {
-    const[input, setInput]= useState("");
-    const navigate= useNavigate();
-    const submitHandler= (e) =>{
-e.preventDefault();
-navigate("/searched/" + input)
+    const [input, setInput] = useState("");
+    const navigate = useNavigate();
+    const submitHandler = (e) => {
+        e.preventDefault();
+        navigate("/searched/" + input)
     };
-return (
-    <FormStyle onSubmit={submitHandler}>
-        <div>
-            <FaSearch></FaSearch>
-        <input placeholder='Search Favourite Recipes ...' onChange={(e) => setInput(e.target.value)} type="text" value={input} />
-        </div>
-     
-    </FormStyle>
-);
+    return (
+        <FormStyle onSubmit={submitHandler}>
+            <div>
+                <FaSearch></FaSearch>
+                <input placeholder='Search Favourite Recipes ...' onChange={(e) => setInput(e.target.value)} type="text" value={input} />
+            </div>
+
+        </FormStyle>
+    );
 }
- const FormStyle = styled.form`
+const FormStyle = styled.form`
 
  width: 100%;
  display: flex;
  justify-content: center;
+ z-index: 9999;
 
  div{
  width:100%;
- position: relative;
+ position: fixed;
+ top: 20px;
+ padding: 0rem 11.4rem;
+ 
 
  }
 
@@ -37,7 +41,7 @@ return (
     background: linear-gradient(to right, #9d27b2, #6b067f);
     font-size:1.5rem;
     color: white;
-    padding: 1rem 3rem;
+    padding: 1rem 4rem;
     ::placeholder {
         color: white;
       }
@@ -48,10 +52,13 @@ return (
  }
  svg{
     position: absolute;
-    top:50%;
-    left:0%;
-    transform: translate(100%, -50%);
+    top: 25px;
+    left: 210px;
+    transform: translate(100 %, -50 %);
     color: white;
  }
  `;
 export default Search;
+
+
+
