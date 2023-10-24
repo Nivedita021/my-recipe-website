@@ -27,7 +27,8 @@ font-weight: 400;
 font-family: 'Lobster Two', cursive; 
 `;
 const Nav= styled.div`
-padding: 4rem 0rem;
+padding: 0rem 2rem;
+margin-top: 6rem;
 display: flex;
 justify-constent: center;
 align-items: center;
